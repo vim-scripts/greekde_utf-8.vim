@@ -1,0 +1,693 @@
+" Vim Keymap file for Unicode polytonic Greek, for the German QWERTZ keyboard.
+"
+" Author: Menno Rubingh
+" Date  : May 2015.
+" 
+" The purpose of this Keymap is to make polytonic Greek characters easy to enter on the 
+" German QWERTZ keyboard.  (Most importantly, this Keymap does not use keys that are 
+" 'dead keys' on the German keyboard, and that are therefore hard to use for other purposes,
+" such as the tilde, acute/grave/backquote, and caret keys.  It also avoids the awkward AltGr 
+" key combinations.) 
+"
+" For the Greek diacritics, this keymap uses the number keys.  On the German keyboard, 
+" the row of number keys above the letter keys is labeled as follows (where the glyph on
+" the top left of the key is the value with shift pressed):
+"
+"    +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+"    | !   | "   |     |     |     | &   | /   | (   | )   | =   |
+"    |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  |
+"    +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+"
+" The accents and breathings are created by pressing the UNSHIFTED number key whose shifted 
+" value suggests the diacritic.  The full set of diacritic keys is as follows:
+"
+"      Key        Shift      Creates
+"                 pressed
+" 
+"      ! 1         No        Tonos         (modern accent)
+"      " 2         No        Dialytika     (diaeresis, trema)
+"            
+"      & 6         No        Varia         (grave accent)
+"      / 7         No        Oxia          (acute accent)
+"      ( 8         No        Psili         (rough breathing)
+"      ) 9         No        Dasia         (smooth breathing)
+"      = 0         No        Perispomeni   (circumflex accent)
+"
+"      underscore  Yes       Ypogegrammeni (iota subscript)
+"
+" (Three of the number keys, namely 3,4,5, are unused.)
+"
+" Only the "& 6" key for the Varia (grave) accent is somewhat less mnemonic; it is used 
+" because it is next to the "/ 7" key used for the Oxia (acute) accent.  
+"
+" The iota subscript (Ypogegrammeni) -- which is properly speaking a subscript, and not 
+" really a normal diacritic -- is produced by typing underscore (i.e. Shift minus), and 
+" not via one of the number keys.
+"
+" Note that to produce the diacritics, the number keys are pressed WITHOUT shift or AltGr.
+" (I.e. the glyph printed in the upper left corner of the key is used as a mnemonic, and as
+" a mnemonic only.)  The rationale behind this is that Greek is normally written mostly in 
+" lower-case, so that it is faster to type the accented letters of Greek via key combinations 
+" that do not constantly use Shift.  
+" Since this Keymap does not use the shifted number key values, all the interpunction 
+" characters printed on the number keys (and produced by number key plus Shift or AltGr) 
+" can therefore be typed as usual, without leaving Greek input mode.  However, to type 
+" arabic numbers you do have to leave Greek input mode.
+"
+"
+" The rules for the ORDER of keystrokes in a letter with multiple diacritics are:
+" The breathing precedes the letter, and everything else follows the letter.
+" Iota-subscript (Ypogegrammeni) and diaeresis (Dialytika) are always typed last.
+" Examples:
+"   +----+ +----+ +----+
+"   | )  | |    | | =  |
+"   |  9 | |  w | |  0 |      is omega with smooth breathing and circumflex;
+"   +----+ +----+ +----+
+"                         
+"   +----+ +----+ +----+  Shift+
+"   | (  | |    | | /  |  +----+
+"   |  8 | |  h | |  7 |  | _  |   is eta with rough breathing, 
+"   +----+ +----+ +----+  +----+        acute accent, and iota subscript.
+"
+"
+" The Greek letters themselves are typed by the Latin character keys to which they
+" correspond.  Shifted letter keys produce capital letters, and unshifted ones produce 
+" lower-case letters, as normally.
+"
+" For the Greek letters that have no direct correspondence in the Latin alphabet and/or 
+" for which different Latin transliterations are commonly used in different places, the 
+" following keys are used:
+"
+"    Greek           Key     (Mnemonic/Rationale)
+"    letter     
+"
+"    Eta             H/h     (Latin H and Greek Eta are historically cognates)
+"    Theta           J/j     (J is near T and H on the keyboard)
+"    Kappa           K/k
+"    Xi              X/x      
+"    Upsilon         U/u      
+"    Chi             C/c     (The Latin spelling 'Chi' begins with C)
+"    Psi             V/v      
+"    Omega           W/w     (W looks like Omega, and its sound is somewhat similar)
+"    Final Sigma     q       (q is near S on the keyboard and looks roughly like final sigma)
+"
+" --------------------------------------------------------------------------------------
+
+
+let b:keymap_name = "greekde"
+loadkeymap
+"
+"
+" GREEK LETTERS WITHOUT DIACRITICS
+"
+A	<char-0x0391>   " GREEK CAPITAL LETTER ALPHA
+B	<char-0x0392>   " GREEK CAPITAL LETTER BETA
+G	<char-0x0393>   " GREEK CAPITAL LETTER GAMMA
+D	<char-0x0394>   " GREEK CAPITAL LETTER DELTA
+E	<char-0x0395>   " GREEK CAPITAL LETTER EPSILON
+Z	<char-0x0396>   " GREEK CAPITAL LETTER ZETA
+H	<char-0x0397>   " GREEK CAPITAL LETTER ETA
+J	<char-0x0398>   " GREEK CAPITAL LETTER THETA
+I	<char-0x0399>   " GREEK CAPITAL LETTER IOTA
+K	<char-0x039A>   " GREEK CAPITAL LETTER KAPPA
+L	<char-0x039B>   " GREEK CAPITAL LETTER LAMDA
+M	<char-0x039C>   " GREEK CAPITAL LETTER MU
+N	<char-0x039D>   " GREEK CAPITAL LETTER NU
+X	<char-0x039E>   " GREEK CAPITAL LETTER XI
+O	<char-0x039F>   " GREEK CAPITAL LETTER OMIKRON
+P	<char-0x03A0>   " GREEK CAPITAL LETTER PI
+R	<char-0x03A1>   " GREEK CAPITAL LETTER RHO
+S	<char-0x03A3>   " GREEK CAPITAL LETTER SIGMA
+T	<char-0x03A4>   " GREEK CAPITAL LETTER TAU
+U	<char-0x03A5>   " GREEK CAPITAL LETTER UPSILON
+F	<char-0x03A6>   " GREEK CAPITAL LETTER PHI
+C	<char-0x03A7>   " GREEK CAPITAL LETTER CHI
+V	<char-0x03A8>   " GREEK CAPITAL LETTER PSI
+W	<char-0x03A9>   " GREEK CAPITAL LETTER OMEGA
+"
+a	<char-0x03B1>   " GREEK SMALL LETTER ALPHA
+b	<char-0x03B2>   " GREEK SMALL LETTER BETA
+g	<char-0x03B3>   " GREEK SMALL LETTER GAMMA
+d	<char-0x03B4>   " GREEK SMALL LETTER DELTA
+e	<char-0x03B5>   " GREEK SMALL LETTER EPSILON
+z	<char-0x03B6>   " GREEK SMALL LETTER ZETA
+h	<char-0x03B7>   " GREEK SMALL LETTER ETA
+j	<char-0x03B8>   " GREEK SMALL LETTER THETA
+i	<char-0x03B9>   " GREEK SMALL LETTER IOTA
+k	<char-0x03BA>   " GREEK SMALL LETTER KAPPA
+l	<char-0x03BB>   " GREEK SMALL LETTER LAMDA
+m	<char-0x03BC>   " GREEK SMALL LETTER MU
+n	<char-0x03BD>   " GREEK SMALL LETTER NU
+x	<char-0x03BE>   " GREEK SMALL LETTER XI
+o	<char-0x03BF>   " GREEK SMALL LETTER OMIKRON
+p	<char-0x03C0>   " GREEK SMALL LETTER PI
+r	<char-0x03C1>   " GREEK SMALL LETTER RHO
+q	<char-0x03C2>   " GREEK SMALL LETTER FINAL SIGMA
+s	<char-0x03C3>   " GREEK SMALL LETTER SIGMA
+t	<char-0x03C4>   " GREEK SMALL LETTER TAU
+u	<char-0x03C5>   " GREEK SMALL LETTER UPSILON
+f	<char-0x03C6>   " GREEK SMALL LETTER PHI
+c	<char-0x03C7>   " GREEK SMALL LETTER CHI
+v	<char-0x03C8>   " GREEK SMALL LETTER PSI
+w	<char-0x03C9>   " GREEK SMALL LETTER OMEGA
+"
+"
+"
+"
+" GREEK LETTERS WITH MODERN TONOS (and no further diacritics)
+"
+A1	<char-0x0386>  " GREEK CAPITAL LETTER ALPHA WITH TONOS
+E1	<char-0x0388>  " GREEK CAPITAL LETTER EPSILON WITH TONOS
+H1	<char-0x0389>  " GREEK CAPITAL LETTER ETA WITH TONOS
+I1	<char-0x038A>  " GREEK CAPITAL LETTER IOTA WITH TONOS
+O1	<char-0x038C>  " GREEK CAPITAL LETTER OMIKRON WITH TONOS
+U1	<char-0x038E>  " GREEK CAPITAL LETTER UPSILON WITH TONOS
+W1	<char-0x038F>  " GREEK CAPITAL LETTER OMEGA WITH TONOS
+"
+a1	<char-0x03AC>  " GREEK SMALL LETTER ALPHA WITH TONOS
+e1	<char-0x03AD>  " GREEK SMALL LETTER EPSILON WITH TONOS
+h1	<char-0x03AE>  " GREEK SMALL LETTER ETA WITH TONOS
+i1	<char-0x03AF>  " GREEK SMALL LETTER IOTA WITH TONOS
+o1	<char-0x03CC>  " GREEK SMALL LETTER OMIKRON WITH TONOS
+u1	<char-0x03CD>  " GREEK SMALL LETTER UPSILON WITH TONOS
+w1	<char-0x03CE>  " GREEK SMALL LETTER OMEGA WITH TONOS
+"
+"
+"
+"
+" GREEK LETTERS WITH A TONE DIACRITIC ONLY
+"
+" Letters with Varia:
+"
+A6	<char-0x1FBA>  " GREEK CAPITAL LETTER ALPHA WITH VARIA
+E6	<char-0x1FC8>  " GREEK CAPITAL LETTER ALPHA WITH VARIA
+H6	<char-0x1FCA>  " GREEK CAPITAL LETTER ETA WITH VARIA
+I6	<char-0x1FDA>  " GREEK CAPITAL LETTER IOTA WITH VARIA
+O6	<char-0x1FF8>  " GREEK CAPITAL LETTER OMIKRON WITH VARIA
+U6	<char-0x1FEA>  " GREEK CAPITAL LETTER UPSILON WITH VARIA
+W6	<char-0x1FFA>  " GREEK CAPITAL LETTER OMEGA WITH VARIA
+"
+a6	<char-0x1F70>  " GREEK SMALL LETTER ALPHA WITH VARIA
+e6	<char-0x1F72>  " GREEK SMALL LETTER ALPHA WITH VARIA
+h6	<char-0x1F74>  " GREEK SMALL LETTER ETA WITH VARIA
+i6	<char-0x1F76>  " GREEK SMALL LETTER IOTA WITH VARIA
+o6	<char-0x1F78>  " GREEK SMALL LETTER OMIKRON WITH VARIA
+u6	<char-0x1F7A>  " GREEK SMALL LETTER UPSILON WITH VARIA
+w6	<char-0x1F7C>  " GREEK SMALL LETTER OMEGA WITH VARIA
+"
+" Letters with Oxia:
+"
+A7	<char-0x1FBB>  " GREEK CAPITAL LETTER ALPHA WITH OXIA
+E7	<char-0x1FC9>  " GREEK CAPITAL LETTER EPSILON WITH OXIA
+H7	<char-0x1FCB>  " GREEK CAPITAL LETTER ETA WITH OXIA
+I7	<char-0x1FDB>  " GREEK CAPITAL LETTER IOTA WITH OXIA
+O7	<char-0x1FF9>  " GREEK CAPITAL LETTER OMIKRON WITH OXIA
+U7	<char-0x1FEB>  " GREEK CAPITAL LETTER UPSILON WITH OXIA
+W7	<char-0x1FFB>  " GREEK CAPITAL LETTER OMEGA WITH OXIA
+"
+a7	<char-0x1F71>  " GREEK SMALL LETTER ALPHA WITH OXIA
+e7	<char-0x1F73>  " GREEK SMALL LETTER EPSILON WITH OXIA
+h7	<char-0x1F75>  " GREEK SMALL LETTER ETA WITH OXIA
+i7	<char-0x1F77>  " GREEK SMALL LETTER IOTA WITH OXIA
+o7	<char-0x1F79>  " GREEK SMALL LETTER OMIKRON WITH OXIA
+u7	<char-0x1F7B>  " GREEK SMALL LETTER UPSILON WITH OXIA
+w7	<char-0x1F7D>  " GREEK SMALL LETTER OMEGA WITH OXIA
+"
+" Letters with Perispomeni:
+"
+a0	<char-0x1FB6>  " GREEK SMALL LETTER ALPHA WITH PERISPOMENI
+h0	<char-0x1FC6>  " GREEK SMALL LETTER ETA WITH PERISPOMENI
+i0	<char-0x1FD6>  " GREEK SMALL LETTER IOTA WITH PERISPOMENI
+u0	<char-0x1FE6>  " GREEK SMALL LETTER UPSILON WITH PERISPOMENI
+w0	<char-0x1FF6>  " GREEK SMALL LETTER OMEGA WITH PERISPOMENI
+"
+"
+"
+"
+"
+" GREEK LETTERS WITH PSILI (smooth breathing) 
+"
+" Letters with Psili only:
+"
+9A	<char-0x1F08>  " GREEK CAPITAL LETTER ALPHA WITH PSILI
+9E	<char-0x1F18>  " GREEK CAPITAL LETTER EPSILON WITH PSILI
+9H	<char-0x1F28>  " GREEK CAPITAL LETTER ETA WITH PSILI
+9I	<char-0x1F38>  " GREEK CAPITAL LETTER IOTA WITH PSILI
+9O	<char-0x1F48>  " GREEK CAPITAL LETTER OMIKRON WITH PSILI
+9U	<char-0x1F58>  " GREEK CAPITAL LETTER UPSILON WITH PSILI
+9W	<char-0x1F68>  " GREEK CAPITAL LETTER OMEGA WITH PSILI
+"
+9a	<char-0x1F00>  " GREEK SMALL LETTER ALPHA WITH PSILI
+9e	<char-0x1F10>  " GREEK SMALL LETTER EPSILON WITH PSILI
+9h	<char-0x1F20>  " GREEK SMALL LETTER ETA WITH PSILI
+9i	<char-0x1F30>  " GREEK SMALL LETTER IOTA WITH PSILI
+9o	<char-0x1F40>  " GREEK SMALL LETTER OMIKRON WITH PSILI
+9u	<char-0x1F50>  " GREEK SMALL LETTER UPSILON WITH PSILI
+9w	<char-0x1F60>  " GREEK SMALL LETTER OMEGA WITH PSILI
+9r	<char-0x1FE4>  " GREEK SMALL LETTER RHO WITH PSILI
+"
+" Letters with Psili and Varia:
+"
+9A6	<char-0x1F0A>  " GREEK CAPITAL LETTER ALPHA WITH PSILI AND VARIA
+9E6	<char-0x1F1A>  " GREEK CAPITAL LETTER EPSILON WITH PSILI AND VARIA
+9H6	<char-0x1F2A>  " GREEK CAPITAL LETTER ETA WITH PSILI AND VARIA
+9I6	<char-0x1F3A>  " GREEK CAPITAL LETTER IOTA WITH PSILI AND VARIA
+9O6	<char-0x1F4A>  " GREEK CAPITAL LETTER OMIKRON WITH PSILI AND VARIA
+9U6	<char-0x1F5A>  " GREEK CAPITAL LETTER UPSILON WITH PSILI AND VARIA
+9W6	<char-0x1F6A>  " GREEK CAPITAL LETTER OMEGA WITH PSILI AND VARIA
+"
+9a6	<char-0x1F02>  " GREEK SMALL LETTER ALPHA WITH PSILI AND VARIA
+9e6	<char-0x1F12>  " GREEK SMALL LETTER EPSILON WITH PSILI AND VARIA
+9h6	<char-0x1F22>  " GREEK SMALL LETTER ETA WITH PSILI AND VARIA
+9i6	<char-0x1F32>  " GREEK SMALL LETTER IOTA WITH PSILI AND VARIA
+9o6	<char-0x1F42>  " GREEK SMALL LETTER OMIKRON WITH PSILI AND VARIA
+9u6	<char-0x1F52>  " GREEK SMALL LETTER UPSILON WITH PSILI AND VARIA
+9w6	<char-0x1F62>  " GREEK SMALL LETTER OMEGA WITH PSILI AND VARIA
+"
+" Letters with Psili and Oxia:
+"
+9A7	<char-0x1F0C>  " GREEK CAPITAL LETTER ALPHA WITH PSILI AND OXIA
+9E7	<char-0x1F1C>  " GREEK CAPITAL LETTER EPSILON WITH PSILI AND OXIA
+9H7	<char-0x1F2C>  " GREEK CAPITAL LETTER ETA WITH PSILI AND OXIA
+9I7	<char-0x1F3C>  " GREEK CAPITAL LETTER IOTA WITH PSILI AND OXIA
+9O7	<char-0x1F4C>  " GREEK CAPITAL LETTER OMIKRON WITH PSILI AND OXIA
+9U7	<char-0x1F5C>  " GREEK CAPITAL LETTER UPSILON WITH PSILI AND OXIA
+9W7	<char-0x1F6C>  " GREEK CAPITAL LETTER OMEGA WITH PSILI AND OXIA
+"
+9a7	<char-0x1F04>  " GREEK SMALL LETTER ALPHA WITH PSILI AND OXIA
+9e7	<char-0x1F14>  " GREEK SMALL LETTER EPSILON WITH PSILI AND OXIA
+9h7	<char-0x1F24>  " GREEK SMALL LETTER ETA WITH PSILI AND OXIA
+9i7	<char-0x1F34>  " GREEK SMALL LETTER IOTA WITH PSILI AND OXIA
+9o7	<char-0x1F44>  " GREEK SMALL LETTER OMIKRON WITH PSILI AND OXIA
+9u7	<char-0x1F54>  " GREEK SMALL LETTER UPSILON WITH PSILI AND OXIA
+9w7	<char-0x1F64>  " GREEK SMALL LETTER OMEGA WITH PSILI AND OXIA
+"
+" Letters with Psili and Perispomeni:
+"
+9A0	<char-0x1F0E>  " GREEK CAPITAL LETTER ALPHA WITH PSILI AND PERISPOMENI
+9E0	<char-0x1F1E>  " GREEK CAPITAL LETTER EPSILON WITH PSILI AND PERISPOMENI
+9H0	<char-0x1F2E>  " GREEK CAPITAL LETTER ETA WITH PSILI AND PERISPOMENI
+9I0	<char-0x1F3E>  " GREEK CAPITAL LETTER IOTA WITH PSILI AND PERISPOMENI
+9O0	<char-0x1F4E>  " GREEK CAPITAL LETTER OMIKRON WITH PSILI AND PERISPOMENI
+9U0	<char-0x1F5E>  " GREEK CAPITAL LETTER UPSILON WITH PSILI AND PERISPOMENI
+9W0	<char-0x1F6E>  " GREEK CAPITAL LETTER OMEGA WITH PSILI AND PERISPOMENI
+"
+9a0	<char-0x1F06>  " GREEK SMALL LETTER ALPHA WITH PSILI AND PERISPOMENI
+9e0	<char-0x1F16>  " GREEK SMALL LETTER EPSILON WITH PSILI AND PERISPOMENI
+9h0	<char-0x1F26>  " GREEK SMALL LETTER ETA WITH PSILI AND PERISPOMENI
+9i0	<char-0x1F36>  " GREEK SMALL LETTER IOTA WITH PSILI AND PERISPOMENI
+9o0	<char-0x1F46>  " GREEK SMALL LETTER OMIKRON WITH PSILI AND PERISPOMENI
+9u0	<char-0x1F56>  " GREEK SMALL LETTER UPSILON WITH PSILI AND PERISPOMENI
+9w0	<char-0x1F66>  " GREEK SMALL LETTER OMEGA WITH PSILI AND PERISPOMENI
+"
+"
+"
+"
+" GREEK LETTERS WITH DASIA (rough breathing) 
+"
+" Letters with Dasia only:
+"
+8A	<char-0x1F09>  " GREEK CAPITAL LETTER ALPHA WITH DASIA
+8E	<char-0x1F19>  " GREEK CAPITAL LETTER EPSILON WITH DASIA
+8H	<char-0x1F29>  " GREEK CAPITAL LETTER ETA WITH DASIA
+8I	<char-0x1F39>  " GREEK CAPITAL LETTER IOTA WITH DASIA
+8O	<char-0x1F49>  " GREEK CAPITAL LETTER OMIKRON WITH DASIA
+8U	<char-0x1F59>  " GREEK CAPITAL LETTER UPSILON WITH DASIA
+8W	<char-0x1F69>  " GREEK CAPITAL LETTER OMEGA WITH DASIA
+8R	<char-0x1FEC>  " GREEK CAPITAL LETTER RHO WITH DASIA
+"
+8a	<char-0x1F01>  " GREEK SMALL LETTER ALPHA WITH DASIA
+8e	<char-0x1F11>  " GREEK SMALL LETTER EPSILON WITH DASIA
+8h	<char-0x1F21>  " GREEK SMALL LETTER ETA WITH DASIA
+8i	<char-0x1F31>  " GREEK SMALL LETTER IOTA WITH DASIA
+8o	<char-0x1F41>  " GREEK SMALL LETTER OMIKRON WITH DASIA
+8u	<char-0x1F51>  " GREEK SMALL LETTER UPSILON WITH DASIA
+8w	<char-0x1F61>  " GREEK SMALL LETTER OMEGA WITH DASIA
+8r	<char-0x1FE5>  " GREEK SMALL LETTER RHO WITH DASIA
+"
+" Letters with Dasia and Varia:
+"
+8A6	<char-0x1F0B>  " GREEK CAPITAL LETTER ALPHA WITH DASIA AND VARIA
+8E6	<char-0x1F1B>  " GREEK CAPITAL LETTER EPSILON WITH DASIA AND VARIA
+8H6	<char-0x1F2B>  " GREEK CAPITAL LETTER ETA WITH DASIA AND VARIA
+8I6	<char-0x1F3B>  " GREEK CAPITAL LETTER IOTA WITH DASIA AND VARIA
+8O6	<char-0x1F4B>  " GREEK CAPITAL LETTER OMIKRON WITH DASIA AND VARIA
+8U6	<char-0x1F5B>  " GREEK CAPITAL LETTER UPSILON WITH DASIA AND VARIA
+8W6	<char-0x1F6B>  " GREEK CAPITAL LETTER OMEGA WITH DASIA AND VARIA
+"
+8a6	<char-0x1F03>  " GREEK SMALL LETTER ALPHA WITH DASIA AND VARIA
+8e6	<char-0x1F13>  " GREEK SMALL LETTER EPSILON WITH DASIA AND VARIA
+8h6	<char-0x1F23>  " GREEK SMALL LETTER ETA WITH DASIA AND VARIA
+8i6	<char-0x1F33>  " GREEK SMALL LETTER IOTA WITH DASIA AND VARIA
+8o6	<char-0x1F43>  " GREEK SMALL LETTER OMIKRON WITH DASIA AND VARIA
+8u6	<char-0x1F53>  " GREEK SMALL LETTER UPSILON WITH DASIA AND VARIA
+8w6	<char-0x1F63>  " GREEK SMALL LETTER OMEGA WITH DASIA AND VARIA
+"
+" Letters with Dasia and Oxia:
+"
+8A7	<char-0x1F0D>  " GREEK CAPITAL LETTER ALPHA WITH DASIA AND OXIA
+8E7	<char-0x1F1D>  " GREEK CAPITAL LETTER EPSILON WITH DASIA AND OXIA
+8H7	<char-0x1F2D>  " GREEK CAPITAL LETTER ETA WITH DASIA AND OXIA
+8I7	<char-0x1F3D>  " GREEK CAPITAL LETTER IOTA WITH DASIA AND OXIA
+8O7	<char-0x1F4D>  " GREEK CAPITAL LETTER OMIKRON WITH DASIA AND OXIA
+8U7	<char-0x1F5D>  " GREEK CAPITAL LETTER UPSILON WITH DASIA AND OXIA
+8W7	<char-0x1F6D>  " GREEK CAPITAL LETTER OMEGA WITH DASIA AND OXIA
+"
+8a7	<char-0x1F05>  " GREEK SMALL LETTER ALPHA WITH DASIA AND OXIA
+8e7	<char-0x1F15>  " GREEK SMALL LETTER EPSILON WITH DASIA AND OXIA
+8h7	<char-0x1F25>  " GREEK SMALL LETTER ETA WITH DASIA AND OXIA
+8i7	<char-0x1F35>  " GREEK SMALL LETTER IOTA WITH DASIA AND OXIA
+8o7	<char-0x1F45>  " GREEK SMALL LETTER OMIKRON WITH DASIA AND OXIA
+8u7	<char-0x1F55>  " GREEK SMALL LETTER UPSILON WITH DASIA AND OXIA
+8w7	<char-0x1F65>  " GREEK SMALL LETTER OMEGA WITH DASIA AND OXIA
+"
+" Letters with Dasia and Perispomeni:
+"
+8A0	<char-0x1F0F>  " GREEK CAPITAL LETTER ALPHA WITH DASIA AND PERISPOMENI
+8E0	<char-0x1F1F>  " GREEK CAPITAL LETTER EPSILON WITH DASIA AND PERISPOMENI
+8H0	<char-0x1F2F>  " GREEK CAPITAL LETTER ETA WITH DASIA AND PERISPOMENI
+8I0	<char-0x1F3F>  " GREEK CAPITAL LETTER IOTA WITH DASIA AND PERISPOMENI
+8O0	<char-0x1F4F>  " GREEK CAPITAL LETTER OMIKRON WITH DASIA AND PERISPOMENI
+8U0	<char-0x1F5F>  " GREEK CAPITAL LETTER UPSILON WITH DASIA AND PERISPOMENI
+8W0	<char-0x1F6F>  " GREEK CAPITAL LETTER OMEGA WITH DASIA AND PERISPOMENI
+"
+8a0	<char-0x1F07>  " GREEK SMALL LETTER ALPHA WITH DASIA AND PERISPOMENI
+8e0	<char-0x1F17>  " GREEK SMALL LETTER EPSILON WITH DASIA AND PERISPOMENI
+8h0	<char-0x1F27>  " GREEK SMALL LETTER ETA WITH DASIA AND PERISPOMENI
+8i0	<char-0x1F37>  " GREEK SMALL LETTER IOTA WITH DASIA AND PERISPOMENI
+8o0	<char-0x1F47>  " GREEK SMALL LETTER OMIKRON WITH DASIA AND PERISPOMENI
+8u0	<char-0x1F57>  " GREEK SMALL LETTER UPSILON WITH DASIA AND PERISPOMENI
+8w0	<char-0x1F67>  " GREEK SMALL LETTER OMEGA WITH DASIA AND PERISPOMENI
+"
+"
+"
+"
+"
+" GREEK LETTERS WITH YPOGEGRAMMENI/PROSGEGRAMMENI AND WITHOUT BREATHING
+"
+" Letters with Ypogegrammeni/Prosgegrammeni only:
+"
+A_	<char-0x1FBC>  " GREEK CAPITAL LETTER ALPHA WITH PROSGEGRAMMENI
+H_	<char-0x1FCC>  " GREEK CAPITAL LETTER ETA WITH PROSGEGRAMMENI
+W_	<char-0x1FFC>  " GREEK CAPITAL LETTER OMEGA WITH PROSGEGRAMMENI
+"
+a_	<char-0x1FB3>  " GREEK SMALL LETTER ALPHA WITH YPOGEGRAMMENI
+h_	<char-0x1FC3>  " GREEK SMALL LETTER ETA WITH YPOGEGRAMMENI
+w_	<char-0x1FF3>  " GREEK SMALL LETTER OMEGA WITH YPOGEGRAMMENI
+"
+" Letters with Varia and Ypogegrammeni:
+"
+a6_	<char-0x1FB2>  " GREEK SMALL LETTER ALPHA WITH VARIA AND YPOGEGRAMMENI
+h6_	<char-0x1FC2>  " GREEK SMALL LETTER ETA WITH VARIA AND YPOGEGRAMMENI
+w6_	<char-0x1FF2>  " GREEK SMALL LETTER OMEGA WITH VARIA AND YPOGEGRAMMENI
+"
+" Letters with Oxia and Ypogegrammeni:
+"
+a7_	<char-0x1FB4>  " GREEK SMALL LETTER ALPHA WITH OXIA AND YPOGEGRAMMENI
+h7_	<char-0x1FC4>  " GREEK SMALL LETTER ETA WITH OXIA AND YPOGEGRAMMENI
+w7_	<char-0x1FF4>  " GREEK SMALL LETTER OMEGA WITH OXIA AND YPOGEGRAMMENI
+"
+" Letters with Perispomeni and Ypogegrammeni:
+"
+a0_	<char-0x1FB7> " GREEK SMALL LETTER ALPHA WITH PERISPOMENI AND YPOGEGRAMMENI
+h0_	<char-0x1FC7> " GREEK SMALL LETTER ETA WITH PERISPOMENI AND YPOGEGRAMMENI
+w0_	<char-0x1FF7> " GREEK SMALL LETTER OMEGA WITH PERISPOMENI AND YPOGEGRAMMENI
+"
+"
+"
+" GREEK LETTERS WITH YPOGEGRAMMENI/PROSGEGRAMMENI AND WITH PSILI 
+"
+" Letters with Psili and Ypogegrammeni/Prosgegrammeni:
+"
+9A_	<char-0x1F88>  " GREEK CAPITAL LETTER ALPHA WITH PSILI AND PROSGEGRAMMENI
+9H_	<char-0x1F98>  " GREEK CAPITAL LETTER ETA WITH PSILI AND PROSGEGRAMMENI
+9W_	<char-0x1FA8>  " GREEK CAPITAL LETTER OMEGA WITH PSILI AND PROSGEGRAMMENI
+9a_	<char-0x1F80>  " GREEK SMALL LETTER ALPHA WITH PSILI AND YPOGEGRAMMENI
+9h_	<char-0x1F90>  " GREEK SMALL LETTER ETA WITH PSILI AND YPOGEGRAMMENI
+9w_	<char-0x1FA0>  " GREEK SMALL LETTER OMEGA WITH PSILI AND YPOGEGRAMMENI
+"
+" Letters with Psili and Varia and Ypogegrammeni/Prosgegrammeni:
+"
+9A6_	<char-0x1F8A>  " GREEK CAPITAL LETTER ALPHA WITH PSILI AND VARIA AND PROSGEGRAMMENI
+9H6_	<char-0x1F9A>  " GREEK CAPITAL LETTER ETA WITH PSILI AND VARIA AND PROSGEGRAMMENI
+9W6_	<char-0x1FAA>  " GREEK CAPITAL LETTER OMEGA WITH PSILI AND VARIA AND PROSGEGRAMMENI
+9a6_	<char-0x1F82>  " GREEK SMALL LETTER ALPHA WITH PSILI AND VARIA AND YPOGEGRAMMENI
+9h6_	<char-0x1F92>  " GREEK SMALL LETTER ETA WITH PSILI AND VARIA AND YPOGEGRAMMENI
+9w6_	<char-0x1FA2>  " GREEK SMALL LETTER OMEGA WITH PSILI AND VARIA AND YPOGEGRAMMENI
+"
+" Letters with Psili and Oxia and Ypogegrammeni/Prosgegrammeni:
+"
+9A7_	<char-0x1F8C>  " GREEK CAPITAL LETTER ALPHA WITH PSILI AND OXIA AND PROSGEGRAMMENI
+9H7_	<char-0x1F9C>  " GREEK CAPITAL LETTER ETA WITH PSILI AND OXIA AND PROSGEGRAMMENI
+9W7_	<char-0x1FAC>  " GREEK CAPITAL LETTER OMEGA WITH PSILI AND OXIA AND PROSGEGRAMMENI
+9a7_	<char-0x1F84>  " GREEK SMALL LETTER ALPHA WITH PSILI AND OXIA AND YPOGEGRAMMENI
+9h7_	<char-0x1F94>  " GREEK SMALL LETTER ETA WITH PSILI AND OXIA AND YPOGEGRAMMENI
+9w7_	<char-0x1FA4>  " GREEK SMALL LETTER OMEGA WITH PSILI AND OXIA AND YPOGEGRAMMENI
+"
+" Letters with Psili and Perispomeni and Ypogegrammeni/Prosgegrammeni:
+"
+9A0_	<char-0x1F8E>  " GREEK CAPITAL LETTER ALPHA WITH PSILI AND PERISPOMENI AND PROSGEGRAMMENI
+9H0_	<char-0x1F9E>  " GREEK CAPITAL LETTER ETA WITH PSILI AND OXIA PERISPOMENI PROSGEGRAMMENI
+9W0_	<char-0x1FAE>  " GREEK CAPITAL LETTER OMEGA WITH PSILI AND PERISPOMENI AND PROSGEGRAMMENI
+9a0_	<char-0x1F86>  " GREEK SMALL LETTER ALPHA WITH PSILI AND PERISPOMENI AND YPOGEGRAMMENI
+9h0_	<char-0x1F96>  " GREEK SMALL LETTER ETA WITH PSILI AND PERISPOMENI AND YPOGEGRAMMENI
+9w0_	<char-0x1FA6>  " GREEK SMALL LETTER OMEGA WITH PSILI AND PERISPOMENI AND YPOGEGRAMMENI
+"
+"
+"
+" GREEK LETTERS WITH YPOGEGRAMMENI/PROSGEGRAMMENI AND WITH DASIA 
+"
+" Letters with Dasia and Ypogegrammeni/Prosgegrammeni:
+"
+8A_	<char-0x1F89>  " GREEK CAPITAL LETTER ALPHA WITH DASIA AND PROSGEGRAMMENI
+8H_	<char-0x1F99>  " GREEK CAPITAL LETTER ETA WITH DASIA AND PROSGEGRAMMENI
+8W_	<char-0x1FA9>  " GREEK CAPITAL LETTER OMEGA WITH DASIA AND PROSGEGRAMMENI
+8a_	<char-0x1F81>  " GREEK SMALL LETTER ALPHA WITH DASIA AND YPOGEGRAMMENI
+8h_	<char-0x1F91>  " GREEK SMALL LETTER ETA WITH DASIA AND YPOGEGRAMMENI
+8w_	<char-0x1FA1>  " GREEK SMALL LETTER OMEGA WITH DASIA AND YPOGEGRAMMENI
+"
+" Letters with Dasia and Varia and Ypogegrammeni/Prosgegrammeni:
+"
+8A6_	<char-0x1F8B>  " GREEK CAPITAL LETTER ALPHA WITH DASIA AND VARIA AND PROSGEGRAMMENI
+8H6_	<char-0x1F9B>  " GREEK CAPITAL LETTER ETA WITH DASIA AND VARIA AND PROSGEGRAMMENI
+8W6_	<char-0x1FAB>  " GREEK CAPITAL LETTER OMEGA WITH DASIA AND VARIA AND PROSGEGRAMMENI
+8a6_	<char-0x1F83>  " GREEK SMALL LETTER ALPHA WITH DASIA AND VARIA AND YPOGEGRAMMENI
+8h6_	<char-0x1F93>  " GREEK SMALL LETTER ETA WITH DASIA AND VARIA AND YPOGEGRAMMENI
+8w6_	<char-0x1FA3>  " GREEK SMALL LETTER OMEGA WITH DASIA AND VARIA AND YPOGEGRAMMENI
+"
+" Letters with Dasia and Oxia and Ypogegrammeni/Prosgegrammeni:
+"
+8A7_	<char-0x1F8D>  " GREEK CAPITAL LETTER ALPHA WITH DASIA AND OXIA AND PROSGEGRAMMENI
+8H7_	<char-0x1F9D>  " GREEK CAPITAL LETTER ETA WITH DASIA AND OXIA AND PROSGEGRAMMENI
+8W7_	<char-0x1FAD>  " GREEK CAPITAL LETTER OMEGA WITH DASIA AND OXIA AND PROSGEGRAMMENI
+8a7_	<char-0x1F85>  " GREEK SMALL LETTER ALPHA WITH DASIA AND OXIA AND YPOGEGRAMMENI
+8h7_	<char-0x1F95>  " GREEK SMALL LETTER ETA WITH DASIA AND OXIA AND YPOGEGRAMMENI
+8w7_	<char-0x1FA5>  " GREEK SMALL LETTER OMEGA WITH DASIA AND OXIA AND YPOGEGRAMMENI
+"
+" Letters with Dasia and Perispomeni and Ypogegrammeni/Prosgegrammeni:
+"
+8A0_	<char-0x1F8F>  " GREEK CAPITAL LETTER ALPHA WITH DASIA AND PERISPOMENI AND PROSGEGRAMMENI
+8H0_	<char-0x1F9F>  " GREEK CAPITAL LETTER ETA WITH DASIA AND PERISPOMENI AND PROSGEGRAMMENI
+8W0_	<char-0x1FAF>  " GREEK CAPITAL LETTER OMEGA WITH DASIA AND PERISPOMENI AND PROSGEGRAMMENI
+8a0_	<char-0x1F87>  " GREEK SMALL LETTER ALPHA WITH DASIA AND PERISPOMENI AND YPOGEGRAMMENI
+8h0_	<char-0x1F97>  " GREEK SMALL LETTER ETA WITH DASIA AND PERISPOMENI AND YPOGEGRAMMENI
+8w0_	<char-0x1FA7>  " GREEK SMALL LETTER OMEGA WITH DASIA AND PERISPOMENI AND YPOGEGRAMMENI
+"
+"
+"
+"
+" GREEK VOWELS COMBINED WITH DIALYTIKA (diaeresis)
+"
+I2	<char-0x03AA>  " GREEK CAPITAL LETTER IOTA WITH DIALYTIKA
+U2	<char-0x03AB>  " GREEK CAPITAL LETTER UPSILON WITH DIALYTIKA
+"
+i2	<char-0x03CA>  " GREEK SMALL LETTER IOTA WITH DIALYTIKA
+u2	<char-0x03CB>  " GREEK SMALL LETTER UPSILON WITH DIALYTIKA
+"
+i12	<char-0x0390>  " GREEK SMALL LETTER IOTA WITH DIALYTIKA AND TONOS
+u12	<char-0x03B0>  " GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND TONOS
+"
+i62	<char-0x1FD2>  " GREEK SMALL LETTER IOTA WITH DIALYTIKA AND VARIA
+u62	<char-0x1FE2>  " GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND VARIA
+"
+i72     <char-0x1FD3>  " GREEK SMALL LETTER IOTA WITH DIALYTIKA AND OXIA
+u72     <char-0x1FE3>  " GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND OXIA
+"
+i02	<char-0x1FD7>  " GREEK SMALL LETTER IOTA WITH DIALYTIKA AND PERISPOMENI
+u02	<char-0x1FE7>  " GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND PERISPOMENI
+"
+"
+"
+" GREEK 'DOUBTFUL VOWELS' COMBINED WITH LENGTH DIACRITICS
+" These are typed by following the vowel with double asterisk (for Vrachy) or 
+" with double plus (for Macron).
+"
+A++	<char-0x1FB9>  " GREEK CAPITAL LETTER ALPHA WITH MACRON
+I++	<char-0x1FD9>  " GREEK CAPITAL LETTER IOTA WITH MACRON
+U++	<char-0x1FE9>  " GREEK CAPITAL LETTER UPSILON WITH MACRON
+"
+A**	<char-0x1FB8>  " GREEK CAPITAL LETTER ALPHA WITH VRACHY
+I**	<char-0x1FD8>  " GREEK CAPITAL LETTER IOTA WITH VRACHY
+U**	<char-0x1FE8>  " GREEK CAPITAL LETTER UPSILON WITH VRACHY
+"
+a++	<char-0x1FB1>  " GREEK SMALL LETTER ALPHA WITH MACRON
+i++	<char-0x1FD1>  " GREEK SMALL LETTER IOTA WITH MACRON
+u++	<char-0x1FE1>  " GREEK SMALL LETTER UPSILON WITH MACRON
+"
+a**	<char-0x1FB0>  " GREEK SMALL LETTER ALPHA WITH VRACHY
+i**	<char-0x1FD0>  " GREEK SMALL LETTER IOTA WITH VRACHY
+u**	<char-0x1FE0>  " GREEK SMALL LETTER UPSILON WITH VRACHY
+"
+"
+"
+"
+"
+" COMBINING GREEK DIACRITICS 
+" These are typed by apostrophe (single-quote) followed by the diacritic key.
+" (Note: Apostrophe on its own is entered by pressing the single-quote key twice.)
+"
+'1 	<char-0x0301>  " COMBINING ACUTE ACCENT           (= Greek Oxia or Tonos)
+'2	<char-0x0308>  " COMBINING DIAERESIS              (= Greek Dialytika)
+"
+'8	<char-0x0313>  " COMBINING COMMA ABOVE            (= Greek Psili)
+'9	<char-0x0314>  " COMBINING REVERSED COMMA ABOVE   (= Greek Dasia)
+"
+'6	<char-0x0300>  " COMBINING GRAVE ACCENT           (= Greek Varia)
+'7	<char-0x0301>  " COMBINING ACUTE ACCENT           (= Greek Oxia or Tonos)
+'0	<char-0x0342>  " COMBINING GREEK PERISPOMENI
+"
+'_	<char-0x0345>  " COMBINING GREEK YPOGEGRAMMENI
+"
+'+	<char-0x0304>  " COMBINING MACRON               
+'*	<char-0x0306>  " COMBINING BREVE                  ( = Greek Vrachy)
+"
+"
+"
+" CODE POINTS CONTAINING NONCOMBINING GREEK DIACRITICS WITHOUT LETTER
+" These are typed by hash followed by the *SHIFTED* diacritic keys.
+"
+#\"	<char-0x00A8>  " DIAERESIS (use as Greek Dialytika missing from Unicode specification)
+#!	<char-0x0384>  " GREEK TONOS
+#!\"	<char-0x0385>  " GREEK DIALYTIKA TONOS
+"
+#&	<char-0x1FEF>  " GREEK VARIA
+#/	<char-0x1FFD>  " GREEK OXIA
+#=	<char-0x1FC0>  " PERISPOMENI
+"
+#(	<char-0x1FFE>  " GREEK DASIA
+"For plain psili use apostrophe (1FBD APOSTROFOS).
+"
+#)&	<char-0x1FCD>  " PSILI VARIA
+#)/	<char-0x1FCE>  " PSILI OXIA
+#)=	<char-0x1FCF>  " PSILI PERISPOMENI
+#(&	<char-0x1FDD>  " DASIA VARIA
+#(/	<char-0x1FDE>  " DASIA OXIA
+#(=	<char-0x1FDF>  " DASIA PERISPOMENI
+"
+#_	<char-0x037A>  " GREEK YPOGEGRAMMENI
+"
+#&\"	<char-0x1FED>  " GREEK DIALYTIKA VARIA
+#=\"	<char-0x1FC1>  " GREEK DIALYTIKA AND PERISPOMENI
+"
+"
+"
+"
+"
+" PUNCTUATION MARKS (GREEK SPECIFIC)
+"
+''	<char-0x1FBD>  " GREEK APOSTROFOS
+?	<char-0x037E>  " GREEK QUESTION MARK (EROTIMATIKO)
+:	<char-0x0387>  " GREEK ANO TELEIA
+"
+#'	<char-0x0374>  " GREEK NUMERAL SIGN         (typed as hash plus single-quote)
+#,	<char-0x0375>  " GREEK LOWER NUMERAL SIGN   (typed as hash plus comma)
+"
+>>	<char-0x00BB>  " RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK 
+<<	<char-0x00AB>  " LEFT-POINTING DOUBLE ANGLE QUOTATION MARK 
+#<	<char-0x201C>  " LEFT DOUBLE QUOTATION MARK
+#>	<char-0x201D>  " RIGHT DOUBLE QUOTATION MARK
+"
+#-	<char-0x2013>  " EN DASH
+#--	<char-0x2014>  " EM DASH
+"
+"
+"
+"
+" SYMBOLS (GREEK SPECIFIC)
+"
+$D	<char-0x20AF>  " DRACHMA SIGN
+$E	<char-0x20AC>  " EURO SIGN
+"
+&&	<char-0x03D7>  " GREEK KAI SYMBOL
+#&      <char-0x03CF>  " GREEK CAPITAL KAI SYMBOL
+"
+"
+"
+" ARCHAIC AND LINGUISTIC GREEK LETTERS
+" These are typed by hash followed by one or more letter keys (upper case when
+" the Greek letter is upper case).
+"
+#FF	<char-0x03DC>  " GREEK LETTER DIGAMMA
+#ff	<char-0x03DD>  " GREEK SMALL LETTER DIGAMMA
+"
+#K	<char-0x03DE>  " GREEK LETTER KOPPA
+#k      <char-0x03DF>  " GREEK SMALL LETTER KOPPA (num value 90)
+"
+#SP	<char-0x03E0>  " GREEK LETTER SAMPI
+#sp	<char-0x03E1>  " GREEK SMALL LETTER SAMPI (num value 900)
+"
+#SS	<char-0x03F9>  " GREEK CAPITAL LUNATE SIGMA SYMBOL
+#ss	<char-0x03F2>  " GREEK LUNATE SIGMA SYMBOL
+"
+#SH	<char-0x03F7>  " GREEK CAPITAL LETTER SHO
+#sh	<char-0x03F8>  " GREEK SMALL LETTER SHO
+"
+#SN	<char-0x03FA>  " GREEK CAPITAL LETTER SAN
+#sn	<char-0x03FB>  " GREEK SMALL LETTER SAN
+"
+#SA	<char-0x0372>  " GREEK CAPITAL LETTER ARCHAIC SAMPI
+#sa	<char-0x0373>  " GREEK SMALL LETTER ARCHAIC SAMPI
+"
+#ST	<char-0x03DA>  " GREEK LETTER STIGMA
+#st	<char-0x03DB>  " GREEK SMALL LETTER STIGMA
+"
+#Q	<char-0x03D8>  " GREEK LETTER ARCHAIC KOPPA
+#q	<char-0x03D9>  " GREEK SMALL LETTER ARCHAIC KOPPA
+"
+#H	<char-0x0370>  " GREEK CAPITAL LETTER HETA
+#h	<char-0x0371>  " GREEK SMALL LETTER HETA
+"
+#Y	<char-0x037F>  " Greek capital letter Yot (new Unicode code-point,
+"                      "  according to en.wikipedia, 2014)
+#y	<char-0x03F3>  " GREEK LETTER YOT
+"
+"
+"
+"
+" VARIANT FORMS OF GREEK LETTERS
+" These are typed by semicolon followed by one or more letter keys (upper case when
+" the Greek letter is upper case).
+" (Note: It seems to me that these symbols are not normally used for writing Greek text, 
+" but instead are used mostly in technical/mathematical texts, in any language including 
+" English.  It seems to me that a Keymap used for accessing these symbols would not include
+" key combinations for all the polytonic Greek diacritics, but would contain apart from
+" such 'mathematical' symbols only the bare Greek letters without diacritics.  So I'm not
+" completely sure that these symbols properly belong in this Keymap for polytonic Greek.  
+" On the other hand, including them can probably do little harm.  An option would be to
+" comment them out.)
+"
+;b	<char-0x03D0>  " GREEK BETA SYMBOL
+;J	<char-0x03F4>  " GREEK CAPITAL THETA SYMBOL
+;j	<char-0x03D1>  " GREEK THETA SYMBOL
+;UH	<char-0x03D2>  " GREEK UPSILON WITH HOOK SYMBOL
+;UA	<char-0x03D3>  " GREEK UPSILON WITH ACUTE AND HOOK SYMBOL
+;UD	<char-0x03D4>  " GREEK UPSILON WITH DIAERESIS AND HOOK SYMBOL
+;f	<char-0x03D5>  " GREEK PHI SYMBOL
+;p	<char-0x03D6>  " GREEK PI SYMBOL
+;k	<char-0x03F0>  " GREEK KAPPA SYMBOL
+;r	<char-0x03F1>  " GREEK RHO SYMBOL
+;el	<char-0x03F5>  " GREEK LUNATE EPSILON SYMBOL
+;er	<char-0x03F6>  " GREEK REVERSED LUNATE EPSILON SYMBOL
+"
+"
+

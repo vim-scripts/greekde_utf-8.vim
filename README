@@ -1,0 +1,48 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=5167
+
+The purpose of this Keymap is to make polytonic Greek characters easy to enter on the
+German QWERTZ keyboard.  (Most importantly, this Keymap does not use keys that are
+'dead keys' on the German keyboard, and that are therefore hard to use for other purposes,
+such as the tilde, acute/grave/backquote, and caret keys.  It also avoids the awkward AltGr
+key combinations.)
+
+The file contains only a simple straightforward keymap mapping, without any further
+"intelligence" such as functions or such.  The keymap can (and should) be used without
+changing the keyboard layout.
+
+For the Greek diacritics, this keymap uses the number keys.  On the German keyboard,
+the row of number keys above the letter keys is labeled as follows (where the glyph on
+the left of the key is the value with shift pressed):
+
+      [!1] ["2] [ 3] [ 4] [ 5] [&6] [/7] [(8] [)9] [=0]
+
+The accents and breathings are created by pressing the UNSHIFTED number key whose shifted
+value on the QWERTZ keyboard suggests the diacritic.  The full set of diacritic keys is
+as follows:
+
+      Key        Shift      Creates
+                 pressed
+      ! 1         No        Tonos         (modern accent)
+      " 2         No        Dialytika     (diaeresis, trema)
+      & 6         No        Varia         (grave accent)
+      / 7         No        Oxia          (acute accent)
+      ( 8         No        Psili         (rough breathing)
+      ) 9         No        Dasia         (smooth breathing)
+      = 0         No        Perispomeni   (circumflex accent)
+      underscore  Yes       Ypogegrammeni (iota subscript)
+
+The rules for the ORDER of keystrokes in a letter with multiple diacritics are:
+The breathing precedes the letter, and everything else follows the letter.
+Iota-subscript (Ypogegrammeni) and diaeresis (Dialytika) are always typed last.
+
+Examples:
+
+      Typing e7    i.e. [e] [/7]           produces Epsilon with acute
+      Typing 9a    i.e. [)9] [a]           produces Alpha with smooth breathing
+      Typing 8h0_  i.e. [(8] [h] [=0] [_]  produces Eta with rough breathing, circumflex, and iota subscript.
+
+The keymap file begins with a comment section explaining in more detail how to type the
+accented Greek characters.
+
+
+
